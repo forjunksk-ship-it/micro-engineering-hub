@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Globe } from 'lucide-react';
 
 const languages = [
-  { code: 'en', name: 'English', flag: '🇬🇧' },
+  { code: 'en', name: 'English', flag: '🇺🇸' },
   { code: 'hi', name: 'हिंदी', flag: '🇮🇳' },
   { code: 'ja', name: '日本語', flag: '🇯🇵' },
   { code: 'es', name: 'Español', flag: '🇪🇸' },
