@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Cog, Shield, Award, Clock, Car, Heart, Cpu, Zap, Settings, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import heroImage from "@/assets/hero-manufacturing.png";
 import cncMachiningImg from "@/assets/cnc-machining.png";
 import precisionImg from "@/assets/precision-components.png";
@@ -54,6 +54,14 @@ const capabilities = [
 
 const HomePage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Auto-slide every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
