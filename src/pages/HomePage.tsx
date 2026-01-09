@@ -209,17 +209,17 @@ const HomePage = () => {
               Delivering precision manufacturing solutions across diverse sectors with unwavering quality standards.
             </p>
           </div>
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 md:gap-6">
             {industries.map((industry, index) => (
               <div
                 key={index}
-                className="bg-card rounded-xl p-6 text-center card-hover border border-border w-[calc(50%-12px)] md:w-[calc(25%-18px)]"
+                className="bg-card rounded-xl p-4 md:p-6 text-center card-hover border border-border"
               >
-                <div className="w-14 h-14 mx-auto mb-4 bg-primary/10 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 md:w-14 md:h-14 mx-auto mb-3 md:mb-4 bg-primary/10 rounded-xl flex items-center justify-center">
                   {industry.customIcon ? (
-                    <img src={industry.customIcon} alt={industry.name} className="h-8 w-8 object-contain" />
+                    <img src={industry.customIcon} alt={industry.name} className="h-6 w-6 md:h-8 md:w-8 object-contain" />
                   ) : industry.icon ? (
-                    <industry.icon className="h-7 w-7 text-primary" />
+                    <industry.icon className="h-6 w-6 md:h-7 md:w-7 text-primary" />
                   ) : null}
                 </div>
                 <h3 className="font-semibold text-foreground mb-1">{industry.name}</h3>
