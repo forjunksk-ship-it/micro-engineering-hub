@@ -59,11 +59,11 @@ const Header = () => {
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden p-1.5 rounded-md hover:bg-secondary"
+            className="lg:hidden p-2 rounded-lg bg-primary hover:bg-primary/90 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X className="h-6 w-6 md:h-5 md:w-5" /> : <Menu className="h-6 w-6 md:h-5 md:w-5" />}
+            {isMenuOpen ? <X className="h-7 w-7 md:h-5 md:w-5 text-primary-foreground" /> : <Menu className="h-7 w-7 md:h-5 md:w-5 text-primary-foreground" />}
           </button>
         </div>
 
