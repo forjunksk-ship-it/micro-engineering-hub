@@ -59,7 +59,7 @@ const ContactPage = () => {
                 {[
                   { icon: Phone, title: "Phone", content: "+91 9354382712", href: "tel:+919354382712" },
                   { icon: Mail, title: "Email", content: "microggn@gmail.com", href: "mailto:microggn@gmail.com" },
-                  { icon: MapPin, title: "Address", content: "207, Sector 7, IMT Manesar, Gurugram, Haryana 122051" },
+                  { icon: MapPin, title: "Address", content: "207, Sector 7, IMT Manesar, Gurugram,\nHaryana, 122051\nINDIA" },
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-4 p-4 bg-card rounded-lg border border-border">
                     <item.icon className="h-6 w-6 text-primary flex-shrink-0" />
@@ -68,7 +68,7 @@ const ContactPage = () => {
                       {item.href ? (
                         <a href={item.href} className="text-muted-foreground hover:text-primary">{item.content}</a>
                       ) : (
-                        <p className="text-muted-foreground">{item.content}</p>
+                        <p className="text-muted-foreground whitespace-pre-line">{item.content}</p>
                       )}
                     </div>
                   </div>
