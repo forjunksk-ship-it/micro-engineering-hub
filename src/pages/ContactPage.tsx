@@ -42,11 +42,14 @@ const ContactPage = () => {
                   <Input type="email" placeholder="Email *" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <Input placeholder="Phone Number" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} />
+                  <div className="relative">
+                    <Input placeholder="Phone Number" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} />
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground italic">(optional)</span>
+                  </div>
                   <Input placeholder="Company Name" value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} />
                 </div>
-                <Textarea placeholder="Your Message / Requirements *" required rows={5} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} />
-                <p className="text-sm text-muted-foreground italic">* Fields are required</p>
+                <Textarea placeholder="Your Message / Requirements" required rows={5} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} />
+                
                 <Button type="submit" className="w-full bg-accent text-accent-foreground hover:bg-accent/90" disabled={isSubmitting}>
                   {isSubmitting ? "Sending..." : "Send Enquiry"}
                 </Button>
