@@ -96,7 +96,7 @@ const HomePage = () => {
           <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
             {/* Image Carousel - Top on mobile, Left on desktop */}
             <div className="w-full md:w-2/5 lg:w-1/3 flex-shrink-0 animate-slide-up">
-              <div className="relative rounded-xl overflow-hidden border-2 border-white/20 shadow-2xl group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-primary/20 hover:border-primary/40 h-48 md:h-64 lg:h-80">
+              <div className="relative rounded-xl overflow-hidden border-2 border-white/20 shadow-2xl group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-primary/20 hover:border-primary/40 aspect-[4/3]">
                 {/* All images stacked with fade transition */}
                 {heroImages.map((image, index) => (
                   <img 
