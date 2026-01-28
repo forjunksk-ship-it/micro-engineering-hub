@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Cog, Shield, Award, Clock, Car, Heart, Cpu, Zap, Settings, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import precisionImg from "@/assets/precision-components.png";
 import galleryImg from "@/assets/gallery-parts.png";
 import product1 from "@/assets/product-1.jpg";
@@ -66,21 +66,41 @@ const capabilities = [
 
 const HomePage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Auto-slide every 4 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
+  // Function to start/restart the auto-slide timer
+  const startAutoSlide = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    intervalRef.current = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
     }, 4000);
-    return () => clearInterval(interval);
   }, []);
+
+  // Start auto-slide on mount
+  useEffect(() => {
+    startAutoSlide();
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [startAutoSlide]);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    startAutoSlide(); // Reset timer after manual slide
   };
 
   const prevImage = () => {
     setCurrentImageIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+    startAutoSlide(); // Reset timer after manual slide
+  };
+
+  const goToImage = (index: number) => {
+    setCurrentImageIndex(index);
+    startAutoSlide(); // Reset timer after manual slide
   };
 
   return (
@@ -129,7 +149,7 @@ const HomePage = () => {
                   {heroImages.map((_, index) => (
                     <button
                       key={index}
-                      onClick={() => setCurrentImageIndex(index)}
+                      onClick={() => goToImage(index)}
                       className={`w-2 h-2 rounded-full transition-all duration-200 ${
                         index === currentImageIndex 
                           ? "bg-primary w-4" 
